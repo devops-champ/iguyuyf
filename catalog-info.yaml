@@ -1,0 +1,20 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: iguyuyf
+  description: Sample service with CI/CD
+  annotations:
+    github.com/project-slug: devops-champ/iguyuyf
+    backstage.io/techdocs-ref: dir:.
+    sonarqube.org/project-key: devops-champ_iguyuyf
+    argocd/app-name: guestbook #devops-champ_iguyuyf
+    roadie-backstage-pull-requests/default-filter: "is:open is:pr"
+spec:
+  type: service
+  lifecycle: experimental
+  owner: group:default/platform-team
+  dependsOn:
+    - component:default/payment-service
+    - component:default/user-service
+    - resource:default/orders-db
+    - resource:default/kafka-cluster
